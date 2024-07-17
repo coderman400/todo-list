@@ -1,12 +1,12 @@
-function Todo(title,description,dueDate,priority){
+function Todo(title,description,dueDate,priority, project){
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     
-    this.project = defaultProject;
+    this.project = project;
 
-    defaultProject.add(this);
+    project.add(this);
 
     const info = ()=>{
         return `${this.title} : ${this.description} due by ${this.dueDate}, ${priority} priority`
@@ -18,7 +18,23 @@ function Todo(title,description,dueDate,priority){
         this.project = project;
     }
 
-    return {info, move}
+    const setTitle = (title) =>{
+        this.title = title;
+    }
+
+    const setDescription = (description) =>{
+        this.description = description;
+    }
+
+    const setDue = (dueDate) => {
+        this.dueDate = dueDate;
+    }
+
+    const setPriority = (priority) => {
+        this.priority = priority;
+    }
+
+    return {info, move, setTitle, setDescription, setDue, setPriority}
 }
 
 function Project(title){
@@ -37,17 +53,39 @@ function Project(title){
             console.log("cant find this element");
         }
     }
-    const info= () => {
-        console.log(`${title} :`)
+    const getInfo = () => {
+        let infoRes =`${title} : `;
         list.forEach((item)=>{
-            console.log(item);
+            console.log(item)
+            infoRes+=item.title;
         })
+        return infoRes;
     }
-    return {add, info, remove }
+    return {add, getInfo, remove }
 }
 
-defaultProject= new Project("default");
-newProject = new Project("new");
-t1 = new Todo("clean", "u know", "tomorrow", "high") 
-t2 = new Todo("wipe", "wat", "hehe", "meow")
-defaultProject.info()
+function applicationDriver(){
+    let defaultProject = new Project("default");
+
+    const createTask= (title,description,dueDate,priority, project = defaultProject)=>{
+        return new Todo(title,description,dueDate,priority, project);
+    }
+    const createProject = (title) =>{
+        return new Project(title);
+    }
+
+    const projectInfo = (project = defaultProject) => {
+        return project.getInfo();
+    }
+
+    return {createTask, createProject, projectInfo}
+}
+
+
+a = new applicationDriver();
+
+let t1= a.createTask("clean", "u know", "tomorrow", "high")
+let t2= a.createTask("wipe", "wat", "hehe", "meow")
+console.log(a.projectInfo());
+console.log("hi")
+
