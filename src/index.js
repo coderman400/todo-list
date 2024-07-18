@@ -1,3 +1,4 @@
+import './style.css'
 function Todo(title,description,dueDate,priority, project){
     this.title = title;
     this.description = description;
@@ -64,7 +65,7 @@ function Project(title){
     return {add, getInfo, remove }
 }
 
-function applicationDriver(){
+export default function applicationDriver(){
     let defaultProject = new Project("default");
 
     const createTask= (title,description,dueDate,priority, project = defaultProject)=>{
@@ -82,10 +83,10 @@ function applicationDriver(){
 }
 
 
-a = new applicationDriver();
+// a = new applicationDriver();
 
-let t1= a.createTask("clean", "u know", "tomorrow", "high")
-let t2= a.createTask("wipe", "wat", "hehe", "meow")
-console.log(a.projectInfo());
-console.log("hi")
+// let t1= a.createTask("clean", "u know", "tomorrow", "high")
+// let t2= a.createTask("wipe", "wat", "hehe", "meow")
+// console.log(a.projectInfo());
+// console.log("hi")
 

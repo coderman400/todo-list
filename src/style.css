@@ -1,0 +1,27 @@
+body{
+    background-color: antiquewhite;
+}
+nav{
+    display:flex;
+    align-content: center;
+    justify-content: right;
+    background-color:rgba(197, 146, 103, 0.603);
+    height:7rem;
+}
+
+.header-button{
+    background-color: transparent;
+    border: none;
+    align-content: center;
+    padding-right:2%;
+    font-size:xx-large;
+    color:rgb(80, 31, 11);
+    transition:ease-in-out;
+}
+
+.header-button:hover{
+    cursor:pointer;
+    color:rgb(255, 255, 255);
+    transition:ease-in-out;
+    transition-duration: 150ms;
+}
