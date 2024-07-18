@@ -7,14 +7,21 @@ nav{
     justify-content: right;
     background-color:rgba(197, 146, 103, 0.603);
     height:7rem;
+    border-radius: 40px;
 }
-
+#cheyy{
+    margin-left: 37px;
+  margin-right: auto;
+  height: 87%;
+  margin-top: 6px;
+}
 .header-button{
     background-color: transparent;
     border: none;
     align-content: center;
     padding-right:2%;
     font-size:xx-large;
+    font-weight: 650;
     color:rgb(80, 31, 11);
     transition:ease-in-out;
 }
