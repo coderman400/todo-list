@@ -28,7 +28,50 @@ nav{
 
 .header-button:hover{
     cursor:pointer;
-    color:rgb(255, 255, 255);
+    color:rgb(247, 247, 247);
     transition:ease-in-out;
-    transition-duration: 150ms;
+    transition-duration: 100ms;
 }
+
+#content{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.project-container{
+    border-radius:30px;
+    background-color:white;
+    width:30rem;
+    padding:20px;
+    margin:30px;
+}
+
+.project-header{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+.project-name{
+    font-size:2em;
+}
+
+#new-task{
+    margin-right:20px;
+    font-size:3em;
+}
+
+#new-task:hover{
+    color:rgb(255, 215, 84);
+}
+.task-container{
+    border-radius:20px;
+    background-color:beige;
+    padding:15px;
+    margin:15px;
+}
+.task-name{
+    font-weight:bolder;
+    font-size:1.5em;
+}
+
+.task-desc{}

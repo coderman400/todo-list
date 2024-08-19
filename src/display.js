@@ -22,21 +22,36 @@ nav.prepend(cheyy);
 projectList.forEach(project => {
     let div = document.createElement('div');
     div.className = 'project-container'
+
+    let projectHead = document.createElement('div');
+    projectHead.className = 'project-header';
+
     let h2 = document.createElement('h2');
-    h2.className = 'project-title'
+    let taskBtn = document.createElement('button');
+    taskBtn.className = 'header-button';
+    taskBtn.id = 'new-task';
+    taskBtn.innerText = '+'
+    h2.className = 'project-name'
     h2.innerText = `${project.getTitle()}`;
-    div.appendChild(h2);
+
+    projectHead.appendChild(h2);
+    projectHead.appendChild(taskBtn);
+
+    div.appendChild(projectHead);
     project.getTasks().forEach(task => {
+        let taskDiv = document.createElement('div');
+        taskDiv.className = 'task-container';
         let p = document.createElement('p');
         p.className = 'task-name'
         let p2 = document.createElement('p');
         p2.className = 'task-desc'
         p2.innerText = task.description;
         p.innerText = task.title;
-        div.appendChild(p);
-        div.appendChild(p2);
-        content.appendChild(div); 
+        taskDiv.appendChild(p);
+        taskDiv.appendChild(p2);
+        div.appendChild(taskDiv); 
     });
+    content.appendChild(div);
 })
 
 
