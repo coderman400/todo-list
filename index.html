@@ -5,6 +5,17 @@
   </head>
   <body>
     <header>
+      <dialog id = "addProjectDialog">
+        <form>
+            <p>
+                <label>Title: <input id = "title" type="text"> </label>
+            </p>
+            <div>
+                <button class = 'formbutton' id= "cancelBtn" value="cancel" formmethod="dialog">Cancel</button>
+                <button class = 'formbutton' id="confirmBtn" value="default">Confirm</button>
+            </div>
+        </form>
+      </dialog>
         <nav id ="navbar">
           <button class='header-button' id="new-project">New Project</button>
         </nav>
