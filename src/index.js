@@ -10,7 +10,13 @@ function Todo(title,description,dueDate,priority, project){
     project.add(this);
 
     const info = ()=>{
-        return `${this.title} : ${this.description} due by ${this.dueDate}, ${priority} priority`
+        return {
+            name:this.title,
+            desc:this.description,
+            due:this.dueDate,
+            prio:this.priority,
+            project: this.project.getTitle()
+        }
     }
 
     const move = (project)=>{
@@ -35,7 +41,7 @@ function Todo(title,description,dueDate,priority, project){
         this.priority = priority;
     }
 
-    return {info, move, setTitle, setDescription, setDue, setPriority}
+    return {title, description, priority, dueDate, info, move, setTitle, setDescription, setDue, setPriority}
 }
 
 function Project(title){
@@ -54,32 +60,38 @@ function Project(title){
             console.log("cant find this element");
         }
     }
-    const getInfo = () => {
-        let infoRes =`${title} : `;
-        list.forEach((item)=>{
-            console.log(item)
-            infoRes+=item.title;
-        })
-        return infoRes;
+    const getTasks = () => {
+        return list;
     }
-    return {add, getInfo, remove }
+
+    const getTitle = () => {
+        return this.title;
+    }
+    return {add, getTasks, remove , getTitle}
 }
 
 export default function applicationDriver(){
     let defaultProject = new Project("default");
+    let projectList = [defaultProject];
 
     const createTask= (title,description,dueDate,priority, project = defaultProject)=>{
         return new Todo(title,description,dueDate,priority, project);
     }
     const createProject = (title) =>{
-        return new Project(title);
+        let p = new Project(title);
+        projectList.push(p);
+        return p;
     }
-
+    const addProject = (project) =>{
+        projectList.push(project);
+    }
     const projectInfo = (project = defaultProject) => {
         return project.getInfo();
     }
-
-    return {createTask, createProject, projectInfo}
+    const getDefault = () => {
+        return defaultProject;
+    }
+    return {projectList, createTask, createProject, projectInfo, getDefault, addProject}
 }
 
 
